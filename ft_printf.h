@@ -5,24 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 19:36:16 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/18 14:38:48 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/18 19:01:21 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/18 19:35:10 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-int ft_printf(const char *str, ...);
+int	ft_printf(const char *format, ...);
+void ft_putchar(char c, int *len);
+void ft_putstr(char *s, int *len);
+void ft_putnbr(int n, int *len);
+void ft_putnbr_u(unsigned int n, int *len);
+void ft_putnbr_base_u(unsigned int n, char *base, int *len);
+void ft_putnbr_base_ulong(unsigned long n, char *base, int *len);
+size_t ft_strlen(char *str);
 
-void print_c(va_list arg, int *len);
-void print_id(va_list arg, int *len);
-void print_u(va_list arg, int *len);
-void print_x(va_list arg, int *len, char c);
-void print_p(va_list arg, int *len);
-void print_s(va_list arg, int *len);
 #endif

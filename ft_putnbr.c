@@ -6,11 +6,11 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:34:20 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/18 15:23:35 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/18 19:32:06 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 void ft_putnbr(int n, int *len)
 {

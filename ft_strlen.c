@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 14:34:04 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/18 15:05:34 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/02 17:31:21 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/18 19:32:15 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void ft_putnbr_unsigned(unsigned int n, int *len)
+size_t	ft_strlen(const char *str)
 {
-	char a;
+	size_t	a;
 
-	if (n < 0)
-		ft_putnbr_unsigned(n / (-1), len);
-	else
+	a = 0;
+	while (str[a] != '\0')
 	{
-		if (n >= 10)
-			ft_putnbr_unsigned(n / 10, len);
-		a = n % 10 + '0';
-		ft_putchar(a, len);
+		a++;
 	}
+	return (a);
 }

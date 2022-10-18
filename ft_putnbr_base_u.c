@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base_ulong.c                             :+:      :+:    :+:   */
+/*   ft_putnbr_base_u.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:33:54 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/18 14:39:44 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/18 19:32:00 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int check_base(char *base)
 {
@@ -39,9 +39,9 @@ static int check_base(char *base)
     return (1);
 }
 
-void ft_putnbr_base_ulong(unsigned long n, char *base, int *len)
+void ft_putnbr_base_u(unsigned int n, char *base, int *len)
 {
-    unsigned long base_len;
+    unsigned int base_len;
 
     if (check_base(base))
     {
@@ -50,7 +50,7 @@ void ft_putnbr_base_ulong(unsigned long n, char *base, int *len)
             base_len++;
         if (n > base_len - 1)
         {
-            ft_putnbr_base_ulong(n / base_len, base, len);
+            ft_putnbr_base_u(n / base_len, base, len);
             n %= base_len;
         }
         ft_putchar(base[n], len);

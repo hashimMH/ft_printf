@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base_u.c                                 :+:      :+:    :+:   */
+/*   ft_putnbr_base_ulong.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:33:54 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/18 14:38:46 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/18 19:31:47 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static int check_base(char *base)
+// static int check_base(char *base)
+// {
+//     int i;
+//     int z;
+
+//     i = 0;
+//     z = 0;
+//     if (base[0] == '\0' || base[1] == '\0')
+//         return (0);
+//     while (base[i])
+//     {
+//         z = i + 1;
+//         if (base[i] == '+' || base[i] == '-')
+//             return (0);
+//         if (base[i] < 32 || base[i] > 126)
+//             return (0);
+//         while (base[z])
+//         {
+//             if (base[i] == base[z])
+//                 return (0);
+//             z++;
+//         }
+//         i++;
+//     }
+//     return (1);
+// }
+
+void ft_putnbr_base_ulong(unsigned long n, char *base, int *len)
 {
-    int i;
-    int z;
-
-    i = 0;
-    z = 0;
-    if (base[0] == '\0' || base[1] == '\0')
-        return (0);
-    while (base[i])
-    {
-        z = i + 1;
-        if (base[i] == '+' || base[i] == '-')
-            return (0);
-        if (base[i] < 32 || base[i] > 126)
-            return (0);
-        while (base[z])
-        {
-            if (base[i] == base[z])
-                return (0);
-            z++;
-        }
-        i++;
-    }
-    return (1);
-}
-
-void ft_putnbr_base_u(unsigned int n, char *base, int *len)
-{
-    unsigned int base_len;
+    unsigned long base_len;
 
     if (check_base(base))
     {
@@ -50,7 +50,7 @@ void ft_putnbr_base_u(unsigned int n, char *base, int *len)
             base_len++;
         if (n > base_len - 1)
         {
-            ft_putnbr_base_u(n / base_len, base, len);
+            ft_putnbr_base_ulong(n / base_len, base, len);
             n %= base_len;
         }
         ft_putchar(base[n], len);
