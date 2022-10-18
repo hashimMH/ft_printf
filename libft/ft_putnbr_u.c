@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 17:26:54 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/16 13:01:33 by hmohamed         ###   ########.fr       */
+/*   Created: 2022/10/18 14:34:04 by hmohamed          #+#    #+#             */
+/*   Updated: 2022/10/18 15:05:34 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void ft_putnbr_unsigned(unsigned int n, int *len)
 {
-	int	a;
+	char a;
 
-	a = 0;
-	if (s)
+	if (n < 0)
+		ft_putnbr_unsigned(n / (-1), len);
+	else
 	{
-		while (s[a] != '\0')
-		{
-			write (fd, &s[a], 1);
-			a++;
-		}
-		write (fd, "\n", 1);
+		if (n >= 10)
+			ft_putnbr_unsigned(n / 10, len);
+		a = n % 10 + '0';
+		ft_putchar(a, len);
 	}
 }

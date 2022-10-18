@@ -1,36 +1,22 @@
-
-
-NAME = ft_printf.a
-
-SRCS = 	ft_strlen.c \
-			  ft_strchr.c \
-			  ft_atoi.c \
-			  ft_putchar_fd.c \
-			  ft_putstr_fd.c \
-			  ft_putendl_fd.c \
-			  ft_putnbr_fd.c \
-
-OBJS = ft_strlen.o \
-			  ft_strchr.o \
-			  ft_atoi.o \
-			  ft_putchar_fd.o \
-			  ft_putstr_fd.o \
-			  ft_putendl_fd.o \
-			  ft_putnbr_fd.o \
-
-CFLAGS = -Wall -Wextra -Werror
-
-CC = cc
+CC=cc
+NAME=libftprintf.a
+CFLAGS=-Wall -Wextra -Werror
+OPTIONS=-c -I.
+SRC=ft_printf.c utils.c utils2.c libft/*.c
+OBJ=*.o
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS) 
-	
+$(NAME): $(OBJ)
+	ar -crs $(NAME) $(OBJ)
+
+$(OBJ): $(SRC)
+	$(CC) $(CFLAGS) $(OPTIONS) $(SRC)
+
 clean:
-	rm -f $(OBJS) 
+	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME) 
+	rm -f $(NAME)
 
-re: fclean all
+re: fclean all	

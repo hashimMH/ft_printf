@@ -6,98 +6,97 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 15:10:40 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/16 20:35:55 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:26:35 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
 #include <stdarg.h>
+#include "libft/ft_putchar.c"
+#include "libft/ft_putstr.c"
+#include "libft/ft_putnbr.c"
+#include "libft/ft_putnbr_u.c"
+#include "libft/ft_putnbr_base_u.c"
+#include "libft/ft_putnbr_base_ulong.c"
 
-void	ft_putstr_fd(char *s, int fd)
+static void print_x(unsigned long num, int *len, char c)
 {
-	int	a;
-
-	a = 0;
-	if (s)
-	{
-		while (s[a] != '\0')
-		{
-			write (fd, &s[a], 1);
-			a++;
-		}
-	}
+	if (c == 'X')
+		ft_putnbr_base_u(num, "0123456789ABCDEF", len);
+	else
+		ft_putnbr_base_u(num, "0123456789abcdef", len);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+static void print_p(unsigned long add, int *len)
 {
-	char	a;
-
-	if (n == -2147483648)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		write(fd, &"8", 1);
-	}
-	else if (n < 0)
-	{
-		write(fd, &"-", 1);
-		ft_putnbr_fd(n / (-1), fd);
-	}
+	if ((void *)add == NULL)
+		ft_putstr("0x0", len);
 	else
 	{
-		if (n >= 10)
-			ft_putnbr_fd(n / 10, fd);
-		a = n % 10 + '0';
-		write(fd, &a, 1);
+		ft_putstr("0x", len);
+		ft_putnbr_base_ulong(add, "0123456789abcdef", len);
 	}
 }
 
-
-void	ft_putchar_fd(char c, int fd)
+static void check(char const *str, va_list arg, int i, int *len)
 {
-	write(fd, &c, 1);
+	char c;
+
+	if (str[i] == 'c')
+	{
+		c = va_arg(arg, int);
+		*len += write(1, &c, 1);
+	}
+	if (str[i] == '%')
+		*len += write(1, "%", 1);
+	if (str[i] == 'd' || str[i] == 'i')
+		ft_putnbr(va_arg(arg, int), len);
+	if (str[i] == 'u')
+		print_uint(va_arg(arg, unsigned int), len);
+	if (str[i] == 'x' || str[i] == 'X')
+		print_x(va_arg(arg, unsigned long), len, str[i]);
+	if (str[i] == 'p')
+		print_p(va_arg(arg, unsigned long), len);
+	if (str[i] == 's')
+		ft_putstr(va_arg(arg, char *), len);
 }
 
-
-
-int	ft_printf(const char *format, ...)
+int ft_printf(const char *format, ...)
 {
-	va_list	arg;	
-	int		i;
+	va_list arg;
+	int i;
+	int len;
 
 	i = 0;
+	len = 0;
 	va_start(arg, format);
 	while (format[i] != '\0')
 	{
-		// if (format[i] == '\\')
-		// 	write()
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == 's')
-				ft_putstr_fd(va_arg(arg, char *), 1);
-			else if (format[i + 1] == 'c')
-				ft_putchar_fd(va_arg(arg, int), 1);
-			else if (format[i + 1] == 'i'
-				|| format[i + 1] == 'd' || format[i + 1] == 'u')
-				ft_putnbr_fd(va_arg(arg, int), 1);
-			i += 2;
+			check(format, arg, i + 1, &len);
 		}
-		write(1, &format[i], 1);
+		else
+		{
+			len++;
+			write(1, &format[i], 1);
+		}
 		i++;
 	}
 	va_end(arg);
-	return (0);
+	return (len);
 }
 
 #include <stdio.h>
 
-int	main()
+int main()
 {
-	char	*d = NULL;
-	char	*f = "hash";
-	char	c = 'h';
-	int		i = -145;
+	char *d = NULL;
+	char *f = "hash";
+	char c = 'h';
+	int i = -145;
 
-	ft_printf("mean is :%s char %c and str %s \n and \\integer %u", d , c , f , i);
+	ft_printf("mean is :%s char %c and str %s \n and \\integer %u", d, c, f, i);
 	return (0);
 }

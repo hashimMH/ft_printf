@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:27:18 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/16 13:01:51 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:38:57 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void ft_putstr(char *s, int *len)
 {
-	int	a;
+	int a;
 
 	a = 0;
 	if (s)
 	{
 		while (s[a] != '\0')
 		{
-			write (fd, &s[a], 1);
+			ft_putchar(s[a], len);
 			a++;
 		}
 	}
