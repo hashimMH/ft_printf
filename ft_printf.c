@@ -6,7 +6,7 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 15:10:40 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/18 15:26:35 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:41:30 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int main()
 	char *f = "hash";
 	char c = 'h';
 	int i = -145;
+
 
 	ft_printf("mean is :%s char %c and str %s \n and \\integer %u", d, c, f, i);
 	return (0);
