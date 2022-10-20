@@ -6,21 +6,13 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 15:10:40 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/18 19:41:18 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/20 10:40:18 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include <unistd.h>
-#include <stdarg.h>
-#include "ft_putchar.c"
-#include "ft_putstr.c"
-#include "ft_putnbr.c"
-#include "ft_putnbr_u.c"
-#include "ft_putnbr_base_u.c"
-#include "ft_putnbr_base_ulong.c"
+#include "ft_printf.h"
 
-static void	print_x(unsigned long num, int *len, char c)
+static void print_x(unsigned long num, int *len, char c)
 {
 	if (c == 'X')
 		ft_putnbr_base_u(num, "0123456789ABCDEF", len);
@@ -28,7 +20,7 @@ static void	print_x(unsigned long num, int *len, char c)
 		ft_putnbr_base_u(num, "0123456789abcdef", len);
 }
 
-static void	print_p(unsigned long add, int *len)
+static void print_p(unsigned long add, int *len)
 {
 	if ((void *)add == NULL)
 		ft_putstr("0x0", len);
@@ -39,9 +31,9 @@ static void	print_p(unsigned long add, int *len)
 	}
 }
 
-static void	check(char const *str, va_list arg, int i, int *len)
+static void check(char const *str, va_list arg, int i, int *len)
 {
-	char	c;
+	char c;
 
 	if (str[i] == 'c')
 	{
@@ -89,26 +81,26 @@ int ft_printf(const char *format, ...)
 	return (len);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main()
-{
-	// char *d = NULL;
-	// char *f = "hash";
-	// char c = 'h';
-	// int i = -145;
-	int *r;
-	int i;
-	//r = "hashhash";
-	i = 0;
-	i = printf("name%p\n",r);
-	 
-	 printf("%i\n", i);
-	 i = 0;
-	i = ft_printf("name%p\n",r);
-	 ft_printf("%i\n", i);
-	// ft_printf("mean is :%s char %c and str %s \n and \\integer %u\n", d, c, f, i);
-	// printf("mean is :%s char %c and str %s \n and \\integer %u\n", d, c, f, i);
+// int main()
+// {
+// 	// char *d = NULL;
+// 	// char *f = "hash";
+// 	// char c = 'h';
+// 	// int i = -145;
+// 	int *r;
+// 	int i;
+// 	//r = "hashhash";
+// 	i = 0;
+// 	i = printf("name%p\n",r);
 
-	return (0);
-}
+// 	 printf("%i\n", i);
+// 	 i = 0;
+// 	i = ft_printf("name%p\n",r);
+// 	 ft_printf("%i\n", i);
+// 	// ft_printf("mean is :%s char %c and str %s \n and \\integer %u\n", d, c, f, i);
+// 	// printf("mean is :%s char %c and str %s \n and \\integer %u\n", d, c, f, i);
+
+// 	return (0);
+// }

@@ -6,15 +6,15 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:31:21 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/18 19:32:15 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/20 10:35:18 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+size_t ft_strlen(const char *str)
 {
-	size_t	a;
+	size_t a;
 
 	a = 0;
 	while (str[a] != '\0')
