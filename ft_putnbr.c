@@ -6,15 +6,15 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:34:20 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/18 19:32:06 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/22 17:46:32 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putnbr(int n, int *len)
+void	ft_putnbr(int n, int *len)
 {
-	char a;
+	char	a;
 
 	if (n == -2147483648)
 	{

@@ -6,15 +6,15 @@
 /*   By: hmohamed <hmohamed@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:27:18 by hmohamed          #+#    #+#             */
-/*   Updated: 2022/10/20 11:14:57 by hmohamed         ###   ########.fr       */
+/*   Updated: 2022/10/21 13:34:01 by hmohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putstr(char *s, int *len)
+void	ft_putstr(char *s, int *len)
 {
-	int a;
+	int	a;
 
 	a = 0;
 	if (s == NULL)
